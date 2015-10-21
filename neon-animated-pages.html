@@ -219,6 +219,12 @@ animations to be run when switching to or switching out of the page.
         this._squelchNextFinishEvent = false;
         return;
       }
+      if(event.detail.fromPage) {
+        event.detail.fromPage.fire('neon-animation-finish', event);
+      }
+      if(event.detail.toPage) {
+        event.detail.toPage.fire('neon-animation-finish', event);
+      }
       this._completeSelectedChanged(event.detail.fromPage, event.detail.toPage);
     },
 
